@@ -28,7 +28,7 @@ public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("https://jo-bag-api.netlify.app");
+				registry.addMapping("/**").allowedOrigins("https://jobagapp.netlify.app");
 			}
 		};
 	}

@@ -29,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlanPostulantSteps {
 
     @LocalServerPort
-
     private RestTemplate restTemplate = new RestTemplate();
     private String getUrl="http://localhost:8080";
     private String error=null;

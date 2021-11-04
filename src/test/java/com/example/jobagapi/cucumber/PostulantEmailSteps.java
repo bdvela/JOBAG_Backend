@@ -11,6 +11,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -37,7 +38,7 @@ public class PostulantEmailSteps {
     private String error="El email ya esta en uso";
 
 
-
+    @Test
     @Given("I am in the register seccion")
     public void iAmInTheRegisterSection() {
 

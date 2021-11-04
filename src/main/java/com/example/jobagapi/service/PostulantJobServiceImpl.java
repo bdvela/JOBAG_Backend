@@ -1,5 +1,7 @@
 package com.example.jobagapi.service;
 
+import com.example.jobagapi.domain.model.JobOffer;
+import com.example.jobagapi.domain.model.Postulant;
 import com.example.jobagapi.domain.model.PostulantJob;
 import com.example.jobagapi.domain.repository.JobOfferRepository;
 import com.example.jobagapi.domain.repository.PostulantJobRepository;
@@ -23,7 +25,7 @@ public class PostulantJobServiceImpl implements PostulantJobService {
 
     @Override
     public PostulantJob createPostulantJob(Long postulantId, Long jobOfferId, PostulantJob postulantJob) {
-        if(postulantJobRepository.existsByPostulantId(postulantId) && postulantJobRepository.existsByJobOfferId(jobOfferId))
+        if(postulantJobRepository.existsByPostulantIdAndJobOfferId(postulantId,jobOfferId))
             throw  new ResourceNotFoundException("El postulante ya postulo a esta oferta de trabajo");
 
         if(!postulantRepository.existsById(postulantId))

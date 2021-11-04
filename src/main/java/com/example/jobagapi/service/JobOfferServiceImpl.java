@@ -1,22 +1,34 @@
 package com.example.jobagapi.service;
 
+import com.example.jobagapi.domain.model.Employeer;
 import com.example.jobagapi.domain.model.JobOffer;
+import com.example.jobagapi.domain.model.PostulantJob;
 import com.example.jobagapi.domain.repository.EmployeerRepository;
 import com.example.jobagapi.domain.repository.JobOfferRepository;
+import com.example.jobagapi.domain.repository.PostulantJobRepository;
+import com.example.jobagapi.domain.repository.PostulantRepository;
 import com.example.jobagapi.domain.service.JobOfferService;
 import com.example.jobagapi.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class JobOfferServiceImpl implements JobOfferService {
     @Autowired
     private JobOfferRepository jobOfferRepository;
     @Autowired
+    private PostulantJobRepository postulantJobRepository;
+    @Autowired
     private EmployeerRepository employeerRepository;
+    @Autowired
+    private PostulantRepository postulantRepository;
 
     @Override
     public Page<JobOffer> getAllJobOffersByEmployeerId(Long employeerId, Pageable pageable) {
@@ -78,4 +90,18 @@ public class JobOfferServiceImpl implements JobOfferService {
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException("Job Offer","Id",jobOfferId));
     }
+
+    @Override
+    public Page<JobOffer> getJobsByPostulantId(Long postulantId, Pageable pageable) {
+        if(!postulantRepository.existsById(postulantId))
+            throw new ResourceNotFoundException("Postulant","Id",postulantId);
+        List<PostulantJob> postulantJobs = postulantJobRepository.getPostulantJobByPostulantId(postulantId);
+        List<JobOffer> jobOffers= new ArrayList<JobOffer>();
+        for (PostulantJob postulantJob: postulantJobs) {
+            jobOffers.add(postulantJob.getJobOffer());
+        }
+        Page<JobOffer> jobOfferPage = new PageImpl<JobOffer>(jobOffers,pageable,jobOffers.size());
+        return jobOfferPage;
+    }
+
 }

@@ -55,6 +55,8 @@ public class JobOffer extends AuditModel {
     @Size(max = 60)
     private String direction;
 
+    private String urlVideo;
+
     public Long getId() {
         return id;
     }
@@ -126,4 +128,13 @@ public class JobOffer extends AuditModel {
         this.title = title;
         return this;
     }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
+    }
+
 }

@@ -12,6 +12,7 @@ public class JobOfferResource {
     private LocalDate final_date_offer;
     private Long salary;
     private String direction;
+    private String urlVideo;
 
     public Long getId() {
         return id;
@@ -84,4 +85,13 @@ public class JobOfferResource {
         this.title = title;
         return this;
     }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
+    }
+
 }

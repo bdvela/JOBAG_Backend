@@ -18,6 +18,8 @@ public class SaveCompanyResource {
     @Size(max = 100)
     private String direccion;
 
+    private String urlVideo;
+
 
     public String getName() {
         return name;
@@ -43,6 +45,15 @@ public class SaveCompanyResource {
 
     public SaveCompanyResource setLogo(String logo) {
         this.logo = logo;
+        return this;
+    }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public SaveCompanyResource setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
         return this;
     }
 

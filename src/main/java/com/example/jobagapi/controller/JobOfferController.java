@@ -42,6 +42,18 @@ public class JobOfferController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
+    @GetMapping("/{postulantId}/joboffers")
+    @Operation(summary="Get joboffers by postulantId", description="Get joboffers by postulantId", tags={"job_offers"})
+    public Page<JobOfferResource> getAllJobsByPostulantId(
+            @PathVariable Long postulantId,
+            Pageable pageable) {
+        Page<JobOffer> jobOfferPage = jobOfferService.getJobsByPostulantId(postulantId, pageable);
+        List<JobOfferResource> resources = jobOfferPage.getContent()
+                .stream()
+                .map(this::convertToResource)
+                .collect(Collectors.toList());
+        return new PageImpl<>(resources, pageable, resources.size());
+    }
 
     @Operation(summary="Get joboffers", description="Get joboffers by employeerId", tags={"job_offers"})
     @GetMapping("/jobOffers/{jobOfferId}/employeers/{employeerId}")

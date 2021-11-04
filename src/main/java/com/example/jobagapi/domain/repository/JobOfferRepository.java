@@ -13,4 +13,5 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
     public Page<JobOffer> findById(Long Id, Pageable pageable);
     Page<JobOffer> findByEmployeerId(Long EmployeerId,Pageable pageable);
     public Optional<JobOffer> findByIdAndEmployeerId(Long id, Long employerId);
+
 }

@@ -59,7 +59,8 @@ public class JobOfferServiceImpl implements JobOfferService {
                     .setDirection(jobOfferDetails.getDirection())
                     .setSalary(jobOfferDetails.getSalary())
                     .setBegin_date_offer(jobOfferDetails.getBegin_date_offer())
-                    .setFinal_date_offer(jobOfferDetails.getFinal_date_offer());
+                    .setFinal_date_offer(jobOfferDetails.getFinal_date_offer())
+                    .setUrlVideo(jobOfferDetails.getUrlVideo());
             return jobOfferRepository.save(jobOffer);
         }).orElseThrow(() -> new ResourceNotFoundException("Job Offer","Id",jobOfferId));
     }

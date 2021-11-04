@@ -13,4 +13,5 @@ public interface JobOfferService {
     JobOffer updateJobOffer(Long employeerId, Long jobOfferId, JobOffer jobOfferDetails);
     Page<JobOffer> getAllJobOffer(Pageable pageable);
     ResponseEntity<?> deleteJobOffer(Long employeerId, Long jobOfferId);
+    Page<JobOffer> getJobsByPostulantId(Long postulantId, Pageable pageable);
 }

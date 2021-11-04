@@ -60,7 +60,8 @@ public class CompanyServiceImpl implements CompanyService {
                     .setDireccion(companyRequest.getDireccion())
                     .setRuc(companyRequest.getRuc())
                     .setLogo(companyRequest.getLogo())
-                    .setDescription(companyRequest.getDescription());
+                    .setDescription(companyRequest.getDescription())
+                    .setUrlVideo(companyRequest.getUrlVideo());
             return companyRepository.save(company);
         }).orElseThrow(() -> new ResourceNotFoundException("Employeer Id" + employeerId + "Sector Id" + sectorId));
     }

@@ -1,6 +1,5 @@
 package com.example.jobagapi.service;
 
-import com.example.jobagapi.domain.model.Employeer;
 import com.example.jobagapi.domain.model.JobOffer;
 import com.example.jobagapi.domain.model.PostulantJob;
 import com.example.jobagapi.domain.repository.EmployeerRepository;
@@ -72,7 +71,7 @@ public class JobOfferServiceImpl implements JobOfferService {
                     .setSalary(jobOfferDetails.getSalary())
                     .setBegin_date_offer(jobOfferDetails.getBegin_date_offer())
                     .setFinal_date_offer(jobOfferDetails.getFinal_date_offer())
-                    .setUrlVideo(jobOfferDetails.getUrlVideo());
+                    .setUrl_video(jobOfferDetails.getUrl_video());
             return jobOfferRepository.save(jobOffer);
         }).orElseThrow(() -> new ResourceNotFoundException("Job Offer","Id",jobOfferId));
     }

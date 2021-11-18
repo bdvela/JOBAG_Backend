@@ -18,7 +18,7 @@ public class SaveCompanyResource {
     @Size(max = 100)
     private String direccion;
 
-    private String urlVideo;
+    private String url_video;
 
 
     public String getName() {
@@ -48,12 +48,12 @@ public class SaveCompanyResource {
         return this;
     }
 
-    public String getUrlVideo() {
-        return urlVideo;
+    public String getUrl_video() {
+        return url_video;
     }
 
-    public SaveCompanyResource setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
+    public SaveCompanyResource setUrl_video(String url_video) {
+        this.url_video = url_video;
         return this;
     }
 

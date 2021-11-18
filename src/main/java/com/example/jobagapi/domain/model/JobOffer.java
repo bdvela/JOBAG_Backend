@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "jobOffers")
@@ -55,7 +54,7 @@ public class JobOffer extends AuditModel {
     @Size(max = 60)
     private String direction;
 
-    private String urlVideo;
+    private String url_video;
 
     public Long getId() {
         return id;
@@ -129,12 +128,12 @@ public class JobOffer extends AuditModel {
         return this;
     }
 
-    public String getUrlVideo() {
-        return urlVideo;
+    public String getUrl_video() {
+        return url_video;
     }
 
-    public void setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
+    public void setUrl_video(String urlVideo) {
+        this.url_video = urlVideo;
     }
 
 }

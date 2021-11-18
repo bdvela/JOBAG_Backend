@@ -1,6 +1,5 @@
 package com.example.jobagapi.resource;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class JobOfferResource {
@@ -12,7 +11,7 @@ public class JobOfferResource {
     private LocalDate final_date_offer;
     private Long salary;
     private String direction;
-    private String urlVideo;
+    private String url_video;
 
     public Long getId() {
         return id;
@@ -86,12 +85,12 @@ public class JobOfferResource {
         return this;
     }
 
-    public String getUrlVideo() {
-        return urlVideo;
+    public String getUrl_video() {
+        return url_video;
     }
 
-    public void setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
+    public void setUrl_video(String url_video) {
+        this.url_video = url_video;
     }
 
 }

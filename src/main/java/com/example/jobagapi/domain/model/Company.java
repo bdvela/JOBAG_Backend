@@ -26,7 +26,7 @@ public class Company extends AuditModel {
     @Size(max = 100)
     private String logo;
 
-    private String urlVideo;
+    private String url_video;
 
     private Long ruc;
 
@@ -93,12 +93,12 @@ public class Company extends AuditModel {
         return this;
     }
 
-    public String getUrlVideo() {
-        return urlVideo;
+    public String getUrl_video() {
+        return url_video;
     }
 
-    public void setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
+    public void setUrl_video(String urlVideo) {
+        this.url_video = urlVideo;
     }
 
     public Long getRuc() {

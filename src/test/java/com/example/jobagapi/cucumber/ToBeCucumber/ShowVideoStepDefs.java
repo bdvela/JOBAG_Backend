@@ -3,8 +3,14 @@ package com.example.jobagapi.cucumber.ToBeCucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.web.client.RestTemplate;
 
 public class ShowVideoStepDefs {
+
+    RestTemplate restTemplate = new RestTemplate();
+    String fooResourceUrl = "http://localhost:8081/employees/";
+
+
     @Given("que el postulante se encuentre en buscando ofertas de trabajo")
     public void queElPostulanteSeEncuentreEnBuscandoOfertasDeTrabajo() {
     }

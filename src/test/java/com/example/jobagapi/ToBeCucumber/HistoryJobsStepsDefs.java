@@ -4,6 +4,7 @@ import com.example.jobagapi.domain.model.Employeer;
 import com.example.jobagapi.domain.model.JobOffer;
 import com.example.jobagapi.domain.model.Postulant;
 import com.example.jobagapi.domain.model.PostulantJob;
+import com.example.jobagapi.domain.repository.EmployeerRepository;
 import com.example.jobagapi.domain.repository.JobOfferRepository;
 import com.example.jobagapi.domain.repository.PostulantJobRepository;
 import com.example.jobagapi.domain.repository.PostulantRepository;
@@ -18,14 +19,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Optional;
+import java.util.*;
 
 import static org.mockito.Mockito.when;
 
 
 public class HistoryJobsStepsDefs {
 
-
+    @Mock
+    private EmployeerRepository employeerRepository;
     @Mock
     private PostulantJobRepository postulantJobRepository;
     @Mock
@@ -78,6 +80,7 @@ public class HistoryJobsStepsDefs {
         postulantJob.setPostulant(postulant);
         postulantJob.setJobOffer(jobOffer);
         postulantJob.setAceppt(true);
+        List<Postulant> LISTOFPOSTULANTS = new ArrayList<Postulant>();
     }
 
     @Given("el empleador desee conocer información extra de los postulantes de su anuncio")
@@ -95,7 +98,7 @@ public class HistoryJobsStepsDefs {
 
     @Then("se mostrará el perfil del postulante seleccionado.")
     public void seMostraráElPerfilDelPostulanteSeleccionado() {
-
+        when(postulantRepository.findById(1L)).thenReturn(OPTIONAL_POSTULANT);
     }
 
     @Given("el empleador visualiza y se interesa en el perfil de un postulante")
@@ -109,18 +112,23 @@ public class HistoryJobsStepsDefs {
 
     @Then("se guardará el perfil del postulante en cuestión.")
     public void seGuardaráElPerfilDelPostulanteEnCuestión() {
+        when(postulantRepository.save(Mockito.any(Postulant.class))).thenReturn(new Postulant());
+
     }
 
     @Given("el empleador desea ver los perfiles de los postulantes que ha guardado")
     public void elEmpleadorDeseaVerLosPerfilesDeLosPostulantesQueHaGuardado() {
+        when(postulantJobRepository.findAll()).thenReturn(Collections.singletonList(postulantJob));
     }
 
     @When("le dé click al apartado de postulantes guardados")
     public void leDéClickAlApartadoDePostulantesGuardados() {
+        when(postulantRepository.findById(2L)).thenReturn(OPTIONAL_POSTULANT);
     }
 
 
     @Then("se le mostrará una lista de los perfiles que guardo previamente.")
     public void seLeMostraráUnaListaDeLosPerfilesQueGuardoPreviamente() {
+        when(postulantRepository.findAll()).thenReturn(Collections.singletonList(postulant));
     }
 }
